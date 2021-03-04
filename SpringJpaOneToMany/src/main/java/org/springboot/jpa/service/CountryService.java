@@ -8,4 +8,8 @@ public interface CountryService {
 	
 	List<Country> getAllCountries();
 	
+	Country saveCountry(Country country);
+	
+	Country getCountryForId(Long countryId);
+	
 }

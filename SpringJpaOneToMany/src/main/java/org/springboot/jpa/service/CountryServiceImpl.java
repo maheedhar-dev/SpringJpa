@@ -20,5 +20,16 @@ public class CountryServiceImpl implements CountryService{
 		 countryRepository.findAll().forEach(country->countries.add(country));
 		 return countries;
 	}
+
+	@Override
+	public Country saveCountry(Country country) {
+		return countryRepository.save(country);
+	}
+
+	@Override
+	public Country getCountryForId(Long countryId) {
+		return countryRepository.findById(countryId).get();
+	}
+	
 	
 }
