@@ -1,10 +1,16 @@
 package org.springboot.jpa.model;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -21,17 +27,22 @@ public class State {
 	private String stateCapital;
 	@Column(name = "state_code")
 	private String stateCode;
-	
+
+	@OneToMany(cascade = CascadeType.ALL,orphanRemoval = true)
+	@JoinColumn(name = "state_fk",referencedColumnName = "state_id")
+	private Set<City> cities = new HashSet<>();
+
 	public State() {
 		// TODO Auto-generated constructor stub
 	}
-	
-	public State(Long stateId, String stateName, String stateCapital, String stateCode) {
+
+	public State(Long stateId, String stateName, String stateCapital, String stateCode, Set<City> cities) {
 		super();
 		this.stateId = stateId;
 		this.stateName = stateName;
 		this.stateCapital = stateCapital;
 		this.stateCode = stateCode;
+		this.cities = cities;
 	}
 
 	public Long getStateId() {
@@ -66,8 +77,14 @@ public class State {
 		this.stateCode = stateCode;
 	}
 
-	
-	
+	public Set<City> getCities() {
+		return cities;
+	}
+
+	public void setCities(Set<City> cities) {
+		this.cities = cities;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -102,9 +119,9 @@ public class State {
 	@Override
 	public String toString() {
 		return "State [stateId=" + stateId + ", stateName=" + stateName + ", stateCapital=" + stateCapital
-				+ ", stateCode=" + stateCode + "]";
+				+ ", stateCode=" + stateCode + ", cities=" + cities + "]";
 	}
-	
-	
-	
+
+	 
+
 }
