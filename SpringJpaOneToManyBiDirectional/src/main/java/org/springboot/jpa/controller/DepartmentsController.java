@@ -1,5 +1,5 @@
 package org.springboot.jpa.controller;
 
-public class StateController {
+public class DepartmentsController {
 
 }
