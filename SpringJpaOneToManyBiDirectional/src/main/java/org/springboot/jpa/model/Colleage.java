@@ -12,13 +12,17 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import lombok.Data;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
 @Table(name = "colleage")
 @NoArgsConstructor
-@Data
+@AllArgsConstructor
+@Setter
+@Getter
 public class Colleage {
 	
 	@Id
