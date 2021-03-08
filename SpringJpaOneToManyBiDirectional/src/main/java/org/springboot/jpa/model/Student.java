@@ -10,17 +10,19 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import lombok.AllArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @Entity
 @Table(name="student")
 @NoArgsConstructor
-@AllArgsConstructor
 @Setter
 @Getter
+@ToString
 public class Student {
 	
 	@Id
@@ -34,5 +36,6 @@ public class Student {
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "department_fk",referencedColumnName = "department_id")
-	Department department;
+	@JsonIgnore
+	private Department department;
 }

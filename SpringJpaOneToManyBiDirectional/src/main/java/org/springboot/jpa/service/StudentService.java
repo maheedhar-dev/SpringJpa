@@ -8,5 +8,5 @@ public interface StudentService{
 	
 	Student findStudentById(Long studentId);
 	List<Student> getAllStudents();
-	
+	Student saveStudentForDepartment(Student student,Long departmentId);
 }
