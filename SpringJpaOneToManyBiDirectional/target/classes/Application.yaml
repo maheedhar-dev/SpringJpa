@@ -10,4 +10,4 @@ spring:  datasource:
   jpa:    hibernate:      ddl-auto: update
     generate-ddl: true
     show-sql: true
-    database: postgresql
+    database: postgresql  security:    user:      name: maheedhar      password: password
