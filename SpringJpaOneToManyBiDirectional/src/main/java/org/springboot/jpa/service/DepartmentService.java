@@ -10,4 +10,5 @@ public interface DepartmentService {
 	List<Department> getAllDepartments();
 	Set<Student> getAllStudentsForDepartment(Long departmentId);
 	Department findDepartmentById(Long departmentId);
+	Department saveDepartmentForColleage(Department department,Long colleageId);
 }

@@ -1,6 +1,5 @@
 package org.springboot.jpa.model;
 
-import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -15,17 +14,19 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import lombok.AllArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @Entity
 @Table(name="department")
 @NoArgsConstructor
-@AllArgsConstructor
 @Setter
 @Getter
+@ToString
 public class Department {
 
 	@Id
@@ -37,10 +38,11 @@ public class Department {
 	@Column(name="department_head")
 	private String departmentHead;
 	
+	@OneToMany(mappedBy = "department",cascade = CascadeType.ALL,orphanRemoval = true)
+	private Set<Student> students;
+	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "colleage_fk",referencedColumnName = "colleage_id")
-	Colleage colleage;
-	
-	@OneToMany(mappedBy = "department",cascade = CascadeType.ALL,orphanRemoval = true)
-	Set<Student> students = new HashSet<>();
+	@JsonIgnore
+	private Colleage colleage;
 }

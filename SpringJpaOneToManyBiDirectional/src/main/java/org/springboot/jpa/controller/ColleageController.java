@@ -44,6 +44,7 @@ public class ColleageController {
 	
 	@GetMapping("/colleage/{colleageId}")
 	public ResponseEntity<Colleage> getColleage(@PathVariable Long colleageId) throws ColleageDataException{
+		System.out.println("In Student controller");
 		if(colleageId==null) {
 			throw new ColleageDataException("ColleageId should not be null");
 		}
